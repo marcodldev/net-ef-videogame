@@ -14,9 +14,16 @@ namespace net_ef_videogame
         public DbSet<SoftwareHouse> SoftwareHouses { get; set; }
 
 
+
+
+
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = localhost; Initial Catalog = videogames_db_ef; Integrated Security = True; Pooling = False");
+            optionsBuilder.UseSqlServer("Data Source = localhost; Initial Catalog = videogames_db_ef; Integrated Security = True; Pooling = False; Encrypt = false;");
         }
+
+ 
     }
 }
