@@ -12,7 +12,7 @@ namespace net_ef_videogame
     public class Videogame
     {
 
-        public Videogame(string name, string overview, DateTime releaseDate, DateTime createdAt, DateTime updatedAt, int softwareHouseId)
+        public Videogame(string name, string overview, DateTime releaseDate, DateTime createdAt, DateTime updatedAt, long softwareHouseId)
         {
 
             Name = name;

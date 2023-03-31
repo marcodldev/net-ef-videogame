@@ -1,8 +1,8 @@
 ﻿
-            
+        
 {
-    try
-    {
+   /* try
+    { */
       
 
 
@@ -58,10 +58,10 @@
                     break;
             }
         }
-    }
-    catch (SqlException ex)
+  /*  }
+    catch ( )
     {
-        Console.WriteLine($"Errore di connessione al database: \n {ex}");
+        Console.WriteLine($"Errore di connessione al database: \n ");
 
-    }
+    } */
 }

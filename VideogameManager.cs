@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace net_ef_videogame
-{
+ /* namespace net_ef_videogame
+ { 
     public class VideogameManager
     {
         private readonly SqlConnection connection;
@@ -140,4 +140,5 @@ namespace net_ef_videogame
 
     }
 
-}
+}  */
+   
