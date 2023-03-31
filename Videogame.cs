@@ -39,16 +39,16 @@ namespace net_ef_videogame
         public SoftwareHouse SoftwareHouse { get; set; }
 
 
-        /*
-                public override string ToString()
-                {
-                    return $"ID: {Id}\n " +
-                        $"Name: {Name}\n " +
-                        $"Overview: {Overview}\n " +
-                        $"Release Date: {ReleaseDate}\n " +
-                        $"Created At: {CreatedAt}\n " +
-                        $"Updated At: {UpdatedAt}\n " +
-                        $"Software House ID: {SoftwareHouseId}\n";
-                } */
+
+        public override string ToString()
+        {
+            return $"ID: {Id}\n " +
+                $"Name: {Name}\n " +
+                $"Overview: {Overview}\n " +
+                $"Release Date: {ReleaseDate}\n " +
+                $"Created At: {CreatedAt}\n " +
+                $"Updated At: {UpdatedAt}\n " +
+                $"Software House ID: {SoftwareHouseId}\n";
+        }
     }
 }

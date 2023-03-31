@@ -44,15 +44,106 @@ while (true)
 
 
         case 2:
-            // Codice per la ricerca per ID
+            
+            Console.WriteLine("Inserisci l'ID del gioco che cerchi:");
+            long idGioco = Convert.ToInt64(Console.ReadLine());
+
+            using (VideogamesContext db = new VideogamesContext())
+            {
+                // Read
+                Videogame videogame = db.Videogames.FirstOrDefault(videogame => videogame.Id == idGioco);
+
+                if (videogame != null)
+                {
+                    Console.WriteLine($"Nome: {videogame.Name}");
+                    Console.WriteLine($"Descrizione: {videogame.Overview}");
+                    Console.WriteLine($"Data di rilascio: {videogame.ReleaseDate}");
+                    Console.WriteLine($"ID della software house: {videogame.SoftwareHouseId}");
+                }
+                else
+                {
+                    Console.WriteLine($"Nessun videogame trovato con ID {idGioco}");
+                }
+            }
+
+
             break;
 
         case 3:
-            // Codice per la ricerca per nome
+            {
+                Console.WriteLine("Inserisci il nome del gioco che cerchi:");
+                string nomeGiocoRicerca = Console.ReadLine();
+
+                using (VideogamesContext db = new VideogamesContext())
+                {
+                    // Read
+                    List<Videogame> videogames = db.Videogames.OrderBy(videogame => videogame.Name).ToList<Videogame>();
+                
+                    foreach(var Videogame in videogames) { 
+
+                        if (videogames != null)
+                        {
+                            Console.WriteLine($"ID gioco: {Videogame.Id}");
+                            Console.WriteLine($"Nome: {Videogame.Name}");
+                            Console.WriteLine($"Descrizione: {Videogame.Overview}");
+                            Console.WriteLine($"Data di rilascio: {Videogame.ReleaseDate}");
+                            Console.WriteLine($"ID della software house: {Videogame.SoftwareHouseId}");
+                            Console.WriteLine(System.Environment.NewLine);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Nessun videogame trovato");
+                        }
+                    }
+                }
+            }
             break;
 
         case 4:
-            // Codice per la cancellazione
+            Console.WriteLine("Inserisci l'ID del gioco che intendi eliminare:");
+            long idGiocoDaEliminare = Convert.ToInt64(Console.ReadLine());
+
+            using (VideogamesContext db = new VideogamesContext())
+            {
+                // Read
+                Videogame videogame = db.Videogames.FirstOrDefault(videogame => videogame.Id == idGiocoDaEliminare);
+
+                if (videogame != null)
+                {
+                    Console.WriteLine($"Nome: {videogame.Name}");
+                    Console.WriteLine($"Descrizione: {videogame.Overview}");
+                    Console.WriteLine($"Data di rilascio: {videogame.ReleaseDate}");
+                    Console.WriteLine($"ID della software house: {videogame.SoftwareHouseId}");
+                    Console.WriteLine(System.Environment.NewLine);
+
+                    Console.WriteLine($"Sei sicuro di voler eliminare {videogame.Name}? (Si/No)");
+
+                    var SioNo = Console.ReadLine();
+
+                    switch (SioNo)
+                    {
+                     case "Si" :
+
+                            db.Remove(videogame);
+                            db.SaveChanges();
+
+
+                            Console.WriteLine(System.Environment.NewLine);
+                            Console.WriteLine($"Hai cancellato {videogame.Name}");
+                            Console.WriteLine(System.Environment.NewLine);
+                            break;
+
+                     case "No":
+
+                            break;
+                    }
+                   
+                }
+                else
+                {
+                    Console.WriteLine($"Nessun videogame trovato con ID {idGiocoDaEliminare}");
+                }
+            }
             break;
 
         case 5:
