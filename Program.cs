@@ -10,7 +10,8 @@ while (true)
     Console.WriteLine("3 - Ricerca videogiochi per nome");
     Console.WriteLine("4 - Cancella un videogame");
     Console.WriteLine("5 - Inserisci una nuova software house");
-    Console.WriteLine("6 - Esci");
+    Console.WriteLine("6 - Ricerca tutti i videogiochi di una software house");
+    Console.WriteLine("7 - Esci");
 
     var scelta = Convert.ToInt32(Console.ReadLine());
 
@@ -131,6 +132,7 @@ while (true)
                             Console.WriteLine(System.Environment.NewLine);
                             Console.WriteLine($"Hai cancellato {videogame.Name}");
                             Console.WriteLine(System.Environment.NewLine);
+
                             break;
 
                      case "No":
@@ -162,6 +164,47 @@ while (true)
             break;
 
         case 6:
+            {
+                Console.WriteLine("Inserisci l'id della software house:");
+                long idSoftwarehouse = Convert.ToInt64(Console.ReadLine());
+
+                using (VideogamesContext db = new VideogamesContext())
+                {
+                    // Read
+                    List<Videogame> videogames = db.Videogames.Where(videogame => videogame.SoftwareHouseId == idSoftwarehouse).OrderBy(videogame => videogame.Name).ToList<Videogame>();
+                    SoftwareHouse softwareHouse = db.SoftwareHouses.FirstOrDefault(sh => sh.SoftwareHouseId == idSoftwarehouse);
+
+
+
+                    Console.WriteLine(System.Environment.NewLine);
+                    Console.WriteLine($"Software House: {softwareHouse.Name}");
+                    Console.WriteLine(System.Environment.NewLine);
+
+                    foreach (var Videogame in videogames)
+                    {
+
+                        if (videogames != null)
+                        {
+                                               
+                            Console.WriteLine($"ID gioco: {Videogame.Id}");
+                            Console.WriteLine($"Nome: {Videogame.Name}");
+                            Console.WriteLine($"Descrizione: {Videogame.Overview}");
+                            Console.WriteLine($"Data di rilascio: {Videogame.ReleaseDate}");
+                            Console.WriteLine(System.Environment.NewLine);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Nessun videogame trovato");
+                        }
+                    }
+                }
+            }
+
+            break;
+
+
+        case 7:
+
             return;
 
         default:
